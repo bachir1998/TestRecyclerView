@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity implements DetecteurDeClicSu
         //mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager=new GridLayoutManager(this,2, GridLayoutManager.VERTICAL, false);
 
-        ((GridLayoutManager)mLayoutManager) .setSpanSizeLookup(
+       /* ((GridLayoutManager)mLayoutManager) .setSpanSizeLookup(
                 new GridLayoutManager.SpanSizeLookup() {
 
                     @Override
                     public int getSpanSize(int arg0) {
                         return (arg0 % 3) == 0 ? 2 : 1;
                     }
-                });
+                });*/
 
 
         mRecyclerView.setLayoutManager(mLayoutManager);

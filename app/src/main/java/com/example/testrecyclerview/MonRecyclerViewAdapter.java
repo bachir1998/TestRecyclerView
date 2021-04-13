@@ -54,15 +54,15 @@ public class MonRecyclerViewAdapter extends RecyclerView.Adapter<MonRecyclerView
             tv_principal = (TextView) itemView.findViewById(R.id.tv_principal);
             tv_auxiliaire = (TextView) itemView.findViewById(R.id.tv_auxiliaire);
             imageView =  itemView.findViewById(R.id.image);
-            ((CardView)itemView).setCardBackgroundColor(Color.rgb(255,0,0));
-            detecteurDeClicSurRecycler.clicSurRecyclerItem(getAdapterPosition(), itemView);
-            ((CardView)itemView).setCardBackgroundColor(Color.rgb(255, 0, 0));
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
+
+            //detecteurDeClicSurRecycler.clicSurRecyclerItem(getAdapterPosition(), itemView);
+            ((CardView)itemView).setCardBackgroundColor(Color.rgb(255, 0, 0));
 
             detecteurDeClicSurRecycler.clicSurRecyclerItem(getAdapterPosition(), view);
 
