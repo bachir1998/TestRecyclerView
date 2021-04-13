@@ -2,7 +2,8 @@ package com.example.testrecyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.DividerItemDecoration;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,16 +30,28 @@ public class MainActivity extends AppCompatActivity implements DetecteurDeClicSu
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
+        //mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager=new GridLayoutManager(this,2, GridLayoutManager.VERTICAL, false);
+
+        ((GridLayoutManager)mLayoutManager) .setSpanSizeLookup(
+                new GridLayoutManager.SpanSizeLookup() {
+
+                    @Override
+                    public int getSpanSize(int arg0) {
+                        return (arg0 % 3) == 0 ? 2 : 1;
+                    }
+                });
+
+
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MonRecyclerViewAdapter(getDataSource());
         mRecyclerView.setAdapter(mAdapter);
         mcoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
 
-        DividerItemDecoration itemDecoration =
-                new DividerItemDecoration(this, R.drawable.divider);
-        mRecyclerView.addItemDecoration(itemDecoration);
+       // DividerItemDecoration itemDecoration =
+         //       new DividerItemDecoration(this, R.drawable.divider);
+        //mRecyclerView.addItemDecoration(itemDecoration);
 
 
     }
@@ -47,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements DetecteurDeClicSu
     private ArrayList<Donnee> getDataSource() {
         ArrayList results = new ArrayList<Donnee>();
         for (int index = 0; index < 20; index++) {
-            Donnee obj = new Donnee("Texte principal " + index,"Texte auxiliaire " + index);
+            Donnee obj = new Donnee("Texte principal " + index,"Texte auxiliaire " + index,R.drawable.automne);
             results.add(index, obj);
         }
         return results;
